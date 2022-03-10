@@ -10,4 +10,11 @@ const ovejas = [
 const isRed = el => el.color === 'rojo';
 
 let redSheep = ovejas.filter(isRed)
-console.log(redSheep)
+
+const filterName = el => {
+  let name = el.name.toLowerCase();
+  return name.includes('n') && name.includes('a') ? true : false;
+}
+
+let sheep = redSheep.filter(filterName)
+console.log(sheep);
