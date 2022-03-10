@@ -7,14 +7,23 @@ const ovejas = [
   { name: 'Nnnnnnnn', color: 'rojo'}
 ]
 
+// función que filtra el key color
 const isRed = el => el.color === 'rojo';
 
-let redSheep = ovejas.filter(isRed)
-
+// función que filtra el key name
 const filterName = el => {
   let name = el.name.toLowerCase();
   return name.includes('n') && name.includes('a') ? true : false;
 }
 
-let sheep = redSheep.filter(filterName)
-console.log(sheep);
+// función principal
+function contarOvejas(ovejas) {
+  // aquí tu magia
+  let redSheep = ovejas.filter(isRed);
+  let sheep = redSheep.filter(filterName);
+  return sheep;
+}
+
+const ovejasFiltradas = contarOvejas(ovejas);
+
+console.log(ovejasFiltradas);
