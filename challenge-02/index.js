@@ -1,14 +1,29 @@
-const carta = 'bici coche balón _playstation bici coche peluche'
+const carta = "bici coche balón _playstation bici coche peluche";
 
-// function listGifts(letter) {
-//   // ¡Tú puedes!
-//   return {};
-// }
+// split array
+const splitArr = (arr) => {
+  let trimmed = arr.trim();
+  let splitted = trimmed.split(' ');
+  return splitted;
+}
 
-// const regalos = listGifts(carta);
+// filter bad gifts
+const rightGifts = arr => arr.filter(el => !el.startsWith('_'));
 
-// console.log(regalos);
+// reducer function
+const reducer = arr => arr.reduce((obj, item) => {
+  !obj[item] ? obj[item] = 1 : obj[item] += 1;
+  return obj;
+}, {});
 
-// split string and filter elements start with '_'
-let arr = carta.split(' ');
-let rightGifts = arr.filter(el => !el.startsWith('_'))
+function listGifts(letter) {
+  // ¡Tú puedes!
+  let readyArr = splitArr(letter);
+  let giftsArr = rightGifts(readyArr);
+  let result = reducer(giftsArr);
+  return result;
+}
+
+const regalos = listGifts(carta);
+
+console.log(regalos);
